@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Hub</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body style="height: 100% !important">
+    <div class="page-wrapper">
+      <header>
+        <nav class="navbar">
+          <div class="nav-container">
+            <a href="index.html" class="logo-heading"> Fashion Fi</a>
+            <a href="index.html" class="logo">
+              <img
+                src="/assets/fashion-logo-design-template-71ccc0c47f801454f8616177ce5b556f_screen.jpg"
+                alt="FashionFi Logo"
+              />
+            </a>
+          </div>
+          <div class="nav-links">
+            <a href="shop.html?category=men's clothing">Men</a>
+            <a href="shop.html?category=women's clothing">Women</a>
+            <a href="shop.html?category=jewelery">Jewelry</a>
+            <a href="shop.html?category=electronics">Electronics</a>
+            <a href="shop.html">All</a>
+          </div>
+          <div class="cart-icon">
+            <a href="cart.html">
+              <i class="fa-solid fa-cart-shopping shopping-icon"></i>
+              <span class="cart-count">0</span>
+            </a>
+            <div class="hamburger-menu">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main class="product-detail-container">
+        <div id="loading" class="loading">Loading product...</div>
+        <div id="product-detail" class="product-detail hidden">
+          <!-- Product details will load here -->
+        </div>
+        <div class="number-quantity">
+          
+        </div>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <span class="footer-text">
+          © 2025
+          <a href="https://FashionFi.com/" class="footer-link">FashionFi™</a>.
+          All Rights Reserved.
+        </span>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">About</a></li>
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-link">Licensing</a></li>
+          <li><a href="#" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+  <script src="/scripts/nav.js"></script>
+  <script src="/scripts/product.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</html>
