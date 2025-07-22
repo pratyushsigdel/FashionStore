@@ -77,6 +77,8 @@
 // });
 
 // window.addEventListener("DOMContentLoaded", renderOrderSummary)
+
+// //Selection Of Several Elements From HTMl
 const checkoutForm = document.querySelector(".checkout-form");
 const orderItemList = document.querySelector("#order-items");
 const orderTotal = document.querySelector("#order-total");
@@ -88,6 +90,8 @@ const emailError = document.querySelector("#email-error");
 const addressError = document.querySelector("#address-error");
 
 let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+ // Function To Render Cart Items To Order Summary
 
 function renderOrderSummary() {
   orderItemList.innerHTML = "";
@@ -109,6 +113,8 @@ function renderOrderSummary() {
   orderTotal.textContent = total.toFixed(2);
 }
 
+//Form Handling and event listener
+
 checkoutForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -127,17 +133,22 @@ checkoutForm.addEventListener("submit", (e) => {
     nameError.classList.remove("hidden");
     nameInput.classList.add("invalid");
     valid = false;
-  } else {
-    nameError.classList.add("hidden");
-    nameInput.classList.remove("invalid");
-  }
+  } 
 
   // Validate Email
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email) {
+    emailError.textContent = "Email should be provided";
     emailError.classList.remove("hidden");
     emailInput.classList.add("invalid");
     valid = false;
-  } else {
+  } else if(!emailPattern.test(email)){
+    emailError.textContent = "Enter a valid email address"
+    emailError.classList.remove("hidden");
+    emailInput.classList.add("invalid");
+    valid = false;
+  }
+  else {
     emailError.classList.add("hidden");
     emailInput.classList.remove("invalid");
   }

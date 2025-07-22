@@ -36,7 +36,9 @@ function loadCart(){
         cartItem.classList.add("cart-item");
 
       cartItem.innerHTML = `
-      <img src="${item.image}" alt="${item.title}" class="cart-image" />
+      <div class = "cart-image"> 
+      <img src="${item.image}" alt="${item.title}" />
+      </div>
       <div class="cart-info">
        <h4>${truncateText((item.title),20)}</h4>
         <p>Price: $${item.price.toFixed(2)}</p>
