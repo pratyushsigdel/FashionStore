@@ -55,7 +55,7 @@ function renderProduct(product) {
         <p class="category"><strong>Category:</strong> ${product.category}</p>
         <p class="price"><strong>Price:</strong> $${product.price.toFixed(2)}</p>
         <p class="description"><strong>Description:</strong>${product.description}</p>
-        <div class="quantity-controls">
+        <div class="quantity-controls product-quantity-controls">
         <label for = "qty-input"> <strong>Quantity: </strong></label>
         <button class="qty-btn decrease" data-id="${product.id}">-</button>
         <input type="number" class="qty-value" id="qty-input" min="1" value="1" />

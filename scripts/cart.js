@@ -129,7 +129,6 @@ function updateQuantity(id, change) {
 function updateCartCount(count=null){
 const cartCount = document.querySelector(".cart-count");
 if(!cartCount) return;
-
 if(count !== null){
 cartCount.textContent = count;
 return;

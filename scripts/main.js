@@ -1,5 +1,6 @@
 //Selecting elements fromt the html
 const productContainer = document.querySelector(".product-container");
+const hamburgerMenu = document.querySelector(".hamburger-menu");
 
 // A function To truncate text 
 function truncateText(string, maxlength){
@@ -38,6 +39,11 @@ function renderProducts(products){
 
     })
 }
+
+
+
+
+
 
 
 
