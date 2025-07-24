@@ -6,9 +6,8 @@ const categoryFilters = document.querySelectorAll(
   ".filter-group input[type='checkbox']"
 );
 const searchForm = document.querySelector(".searchbar form");
-const searchInput = document.querySelector(".searchBox")
+const searchInput = document.querySelector(".searchBox");
 const searchBtn = document.querySelector(".searchBtn");
-
 
 let allProducts = [];
 
@@ -19,7 +18,7 @@ function truncateText(string, maxlength) {
 
 //A function to read url parameters
 
-function getURLCategory(){
+function getURLCategory() {
   const params = new URLSearchParams(window.location.search);
   return params.get("category");
 }
@@ -36,16 +35,16 @@ async function loadProducts() {
 
     allProducts = await response.json();
     loading.classList.add("hidden");
-    
+
     const urlCategory = getURLCategory();
 
     //If Category from navbar exists, check it in sidebar
 
-   if(urlCategory){
-    categoryFilters.forEach((checkbox) => {
-      checkbox.checked = checkbox.value === urlCategory
-    })
-   }
+    if (urlCategory) {
+      categoryFilters.forEach((checkbox) => {
+        checkbox.checked = checkbox.value === urlCategory;
+      });
+    }
 
     applyFiltersAndSorting();
   } catch (error) {
@@ -59,8 +58,8 @@ async function loadProducts() {
 
 function renderProducts(products) {
   productList.innerHTML = "";
-  if(products.length ===0){
-    productList.innerHTML = `<p class="error">No products match your filter.</p>`
+  if (products.length === 0) {
+    productList.innerHTML = `<p class="error">No products match your filter.</p>`;
     return;
   }
   products.forEach((product) => {
@@ -70,7 +69,9 @@ function renderProducts(products) {
     card.innerHTML = ` <img src = "${product.image}" alt = ${product.title}"/>
                            <h4>${truncateText(product.title, 15)}</h4>
                            <p> $${product.price.toFixed(2)} </p>
-                           <a href="product.html?id=${product.id}" class="btn view-btn">View Details</a>
+                           <a href="product.html?id=${
+                             product.id
+                           }" class="btn view-btn">View Details</a>
         
         `;
     productList.appendChild(card);
@@ -96,39 +97,39 @@ function applyFiltersAndSorting() {
 
   const sortValue = sortSelect.value;
 
-  if(sortValue === "price-low"){
-    filtered.sort((a,b) => a.price - b.price)
+  if (sortValue === "price-low") {
+    filtered.sort((a, b) => a.price - b.price);
+  } else if (sortValue === "price-high") {
+    filtered.sort((a, b) => b.price - a.price);
   }
-  else if (sortValue === "price-high"){
-    filtered.sort((a,b) => b.price - a.price)
+  renderProducts(filtered);
+}
+
+//Function For Searching Inside The Shop.html
+
+function searchKeyword() {
+  const keyword = searchInput.value.trim().toLowerCase();
+  let filtered = [...allProducts];
+
+  if (keyword !== "") {
+    filtered = filtered.filter((product) => {
+      return product.title.toLowerCase().includes(keyword);
+    });
   }
-     renderProducts(filtered);
-  }
+  renderProducts(filtered);
+}
 
-  //Function For Searching Inside The Shop.html
-
-  function searchKeyword(){
-    const keyword = searchInput.value.trim().toLowerCase();
-    let filtered = [...allProducts];
-
-    if(keyword !== ""){
-      filtered = filtered.filter((product) => {
-       return product.title.toLowerCase().includes(keyword)
-      })
-    }
-    renderProducts(filtered);
-  }
-
-
-//Event Listeners 
+//Event Listeners
 
 window.addEventListener("DOMContentLoaded", loadProducts);
 
 sortSelect.addEventListener("change", applyFiltersAndSorting);
 
-categoryFilters.forEach((checkbox) => checkbox.addEventListener("change", applyFiltersAndSorting))
+categoryFilters.forEach((checkbox) =>
+  checkbox.addEventListener("change", applyFiltersAndSorting)
+);
 
-searchForm.addEventListener("submit", function(e){
+searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  searchKeyword()
-})
+  searchKeyword();
+});

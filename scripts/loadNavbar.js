@@ -2,16 +2,15 @@
 
 async function loadNavbar() {
   try {
-    const response = await fetch('/components/navbar.html');
+    const response = await fetch("/components/navbar.html");
     const navbarHTML = await response.text();
 
     // Inject the navbar into the placeholder div
-    document.querySelector('.navbar-placeholder').innerHTML = navbarHTML;
+    document.querySelector(".navbar-placeholder").innerHTML = navbarHTML;
 
     // After DOM injection, initialize the hamburger menu logic
     initHamburgerMenu();
     updateCartCountFromStorage();
-
   } catch (error) {
     console.error("Failed to load navbar:", error);
   }
